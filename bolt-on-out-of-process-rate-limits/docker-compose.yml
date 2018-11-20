@@ -5,16 +5,11 @@ services:
     command: go run /go/src/github.com/dm03514/fakapi/cmd/fakeapi/main.go
     volumes:
       - .:/go/src/github.com/dm03514/fakapi
-    #deploy:
-      #resources:
-        #limits:
-          #memory: 20M
     ports:
       - 8080:8080
 
   envoy:
     image: envoyproxy/envoy
-    #network_mode: host
     volumes:
       - ./config/envoy.yaml:/tmp/envoy.yaml
     ports:
@@ -27,7 +22,6 @@ services:
     volumes:
      - ./config/prometheus.yml:/etc/prometheus/prometheus.yml
     command: "--config.file=/etc/prometheus/prometheus.yml --storage.tsdb.path=/prometheus"
-    #network_mode: host
     ports:
      - 9090:9090
     depends_on:
