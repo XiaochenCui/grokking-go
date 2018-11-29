@@ -39,7 +39,7 @@ func init() {
 }
 
 func main() {
-	fmt.Printf("Starting Server on port :%s\n", "8080")
+	fmt.Printf("Starting Server on port :%s\n", "10000")
 
 	http.Handle("/metrics", promhttp.Handler())
 	http.HandleFunc("/work", func(w http.ResponseWriter, r *http.Request) {
@@ -53,5 +53,5 @@ func main() {
 		responseLatency.Observe((time.Since(start)).Seconds())
 	})
 
-	log.Fatal(http.ListenAndServe(":8080", nil))
+	log.Fatal(http.ListenAndServe(":10000", nil))
 }

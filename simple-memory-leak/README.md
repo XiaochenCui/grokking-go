@@ -51,7 +51,7 @@ http://localhost:3000/d/yvumWBFmk/mem-leak-service?refresh=5s&orgId=1
 
 ```
 $ go run main.go
-Starting Server on port :8080
+Starting Server on port :10000
 ```
 
 This service will leak memory on every http requests.  Prometheus is registered
@@ -60,5 +60,5 @@ to scrape it, and its data will show up on the grafana dashboard linked to above
 ## Apply a steady load to the service in order to generate leak data
 
 ```
-$ echo "GET http://localhost:8080/work" | vegeta attack -rate 2000 > /dev/null
+$ echo "GET http://localhost:10000/work" | vegeta attack -rate 2000 > /dev/null
 ```
